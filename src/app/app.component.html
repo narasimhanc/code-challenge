@@ -1,0 +1,21 @@
+<div [class.unicorn-dark-theme]="isDarkTheme">
+  <md-toolbar color="primary">
+   <span><img class="logo" src="/assets/icons/logo.png" routerLink="/home"></span>
+   <nav>
+     <a md-button md-raised-button routerLink="/home" routerLinkActive="active">Home</a>
+      <a md-button md-raised-button routerLink="/movie" routerLinkActive="active">Favorite Movie</a>
+    <a md-button md-raised-button  routerLink="/game" routerLinkActive="active"> Card Game</a>
+    </nav>
+
+    <button md-icon-button [md-menu-trigger-for]="menu">
+      <md-icon>more_vert</md-icon>
+    </button>
+  </md-toolbar>
+  <md-menu x-position="after" #menu="mdMenu">
+    <button md-menu-item (click)="isDarkTheme = !isDarkTheme">{{isDarkTheme === false ? "Dark theme" : "Light Theme"}}</button>
+   
+  </md-menu>
+  <router-outlet ></router-outlet>
+    
+</div>
+

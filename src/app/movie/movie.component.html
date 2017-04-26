@@ -1,0 +1,18 @@
+<md-card class="example-card">
+  <md-card-header>
+
+    <md-card-title><strong>{{theMovie.original_title}}</strong></md-card-title>
+
+  </md-card-header>
+  <img class="posterImg" md-card-image src="http://image.tmdb.org/t/p/w185{{theMovie.poster_path}}"/>
+  <md-card-content>
+    <p>
+    {{theMovie.tagline}}
+    </p>
+  </md-card-content>
+  <md-card-actions>
+     <button md-button md-raised-button  (click)="onSelect(theMovie.id)">Credits</button>
+  </md-card-actions>
+</md-card>
+
+<p [hidden]="!loader">Loading....</p>

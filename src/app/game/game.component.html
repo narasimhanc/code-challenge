@@ -1,0 +1,58 @@
+<!--Section for displaying buttons and results-->
+
+    <div class="row">
+         <div class="col-md-4">
+          <md-card>
+            <!--Show the higher or lower buttons for playing-->
+            <div *ngIf = "buttons">
+                <header><h1>Choose Higher or Lower</h1></header>
+                <a md-button md-raised-button id="higherBtn" (click)="higher()" >Higher</a>
+                <a md-button md-raised-button id="lowerBtn" (click)="lower()" >Lower</a>
+            </div>
+            <!--Show tryagain button after result is shown-->
+            <div *ngIf = "tryagain">
+              <button (click)="getCards()">Try Again</button>
+            </div>
+            <br>
+            <!--Display the result-->
+            <div class="resDisplay" *ngIf = "equal"><strong>Cards are equal.</strong></div>
+            <div class="resDisplay" *ngIf = "correct"><strong>You Win!</strong></div>
+            <div class="resDisplay" *ngIf = "wrong"><strong>Better Luck Next Time</strong></div>
+          </md-card>
+       </div>
+    </div>
+
+    <div class="row">
+         <div style="width:45%;float:left;">
+            <md-card>
+              <img class="img-responsive img-circle" src="/assets/icons/player1.png" alt="image"/>
+              Me
+              <div *ngFor="let x of deck; let i=index; let first = first" >
+                <div *ngIf = "first">
+                  Value: {{ x.value }}
+                  <br>
+                  <img class="img-responsive" alt="Player 1" src="{{ x.image }}"/>
+                </div>
+              </div>
+            </md-card>
+         </div>
+
+         <div style="width:45%;float:right;">
+              <md-card>
+              <img class="img-responsive img-circle" src="/assets/icons/player2.png" alt="image"/>
+              You
+              <div *ngIf = "check">
+                <div *ngFor="let x of deck; let i=index; let last = last" >
+                  <div *ngIf = "last">
+                    Value: {{ x.value }}
+                    <br>
+                    <img class="img-responsive" alt="Player 2" src="{{ x.image }}"/>
+                  </div>
+                </div>
+              </div>
+              <div *ngIf = "!check">
+                     <img class="img-responsive" alt="Player 2" src="/assets/icons/cardback.png"/>
+               </div>
+             </md-card>
+         </div>
+    </div>
